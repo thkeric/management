@@ -1,13 +1,16 @@
 # management
 
-Application portfolio of Tae Hyun (Eric) Kim for the CASETiFY Management Trainee Program 2027–2029. Live at https://thkeric.github.io/management/
+Application portfolio of Tae Hyun (Eric) Kim for the CASETiFY Management Trainee Program 2027–2029, presented as a product-launch keynote. Live at https://thkeric.github.io/management/
 
-Plain HTML and CSS, no build step, published with GitHub Pages from the `main` branch root.
+Plain HTML, CSS and a little JavaScript, no build step. Published with GitHub Pages from the `main` branch root.
 
-- `index.html`: the whole site on one page
-- `assets/css/site.css`: base styles, copied from [thkeric.github.io](https://github.com/thkeric/thkeric.github.io) so both sites share one look
-- `assets/css/management.css`: styles for this site only
-- `assets/img/`: images used on the page, plus `og.png` for link previews
+- `index.html`: the launch (home)
+- `about/`: the maker (bio, release notes, how I make calls)
+- `work/`: the collection (five cases, the drop log, a spec concept)
+- `casetify/`: the proposal (why CASETiFY, fit, choose-a-challenge)
+- `assets/css/launch.css`: all styles
+- `assets/js/launch.js`: scroll reveals and case tilt; every page works without it
+- `assets/img/`: images, plus `og.png` for link previews
 - `404.html`: page shown for broken links
 
-The design case studies stay on the main site: https://thkeric.github.io/work/
+An independent job application. Not affiliated with or endorsed by CASETiFY. Design case studies live on the main site: https://thkeric.github.io/
