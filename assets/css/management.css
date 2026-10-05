@@ -1,0 +1,90 @@
+/* Management site: reuses the paper, ink and pin tokens from site.css,
+   which is copied from thkeric.github.io so both sites share one look.
+   Layout: a 30-second summary up top, then evidence grouped by kind of work,
+   each case read the same way (brief, real problem, what I did, result). */
+.theme-mt { --brand: var(--ink); --brand-tint: #e4e8ed; }
+
+.mt-head .eyebrow { display: block; font-size: 15px; font-weight: 500; color: var(--ink-2); }
+.mt-head h1 { font-size: clamp(40px, 6.4vw, 84px); max-width: 15ch; text-wrap: balance; }
+.mt-head .lede { max-width: 46ch; }
+
+/* one case: label column + body */
+.cases { border-top: 2px solid var(--ink); }
+.case {
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(20px, 4vw, 64px);
+  padding-block: clamp(32px, 4.5vw, 56px);
+  border-bottom: 1px solid var(--rule);
+}
+.case > * { min-width: 0; }
+.case h3 { font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -0.025em; line-height: 1.12; text-wrap: balance; }
+.case .where { margin: 10px 0 0; font-size: 15px; line-height: 1.5; color: var(--ink-3); }
+.case .where b { display: block; color: var(--ink-2); font-weight: 500; }
+.case .figures { margin: 0 0 26px; }
+.case .figures b { font-size: clamp(26px, 2.6vw, 32px); }
+.case-rows { margin: 0; display: grid; gap: 0; }
+.case-rows > div { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-top: 1px solid var(--rule); }
+.case-rows > div:first-child { border-top: 0; padding-top: 0; }
+.case-rows dt { font-size: 14px; font-weight: 700; color: var(--ink); padding-top: 2px; }
+.case-rows dd { margin: 0; font-size: 16.5px; line-height: 1.55; color: #222a34; }
+.case-rows .owned dt { color: var(--pin); }
+.case-rows .owned dt::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--pin); margin-right: 8px; vertical-align: 1px; }
+.case .more { display: inline-block; margin-top: 18px; font-weight: 700; font-size: 16px; text-decoration-color: var(--rule); text-underline-offset: 0.25em; }
+.case .more:hover { text-decoration-color: var(--pin); }
+
+/* product cases carry a picture */
+.case--product { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
+.case--product .stage { min-height: 0; margin-top: 22px; padding: clamp(16px, 2.4vw, 28px); border-radius: 16px; }
+.case--product .stage .screen { width: clamp(80px, 11vw, 138px); }
+.case--product .stage .screen:nth-child(2) { width: clamp(88px, 12vw, 150px); }
+
+.biz { margin-top: 18px; background: var(--raised); border-radius: 14px; padding: clamp(18px, 2.2vw, 26px); }
+.biz h4 { font-size: 14px; letter-spacing: 0; margin: 0 0 12px; display: flex; align-items: center; gap: 10px; }
+.biz h4 span { font-weight: 500; color: var(--ink-3); }
+.biz dl { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px clamp(16px, 2vw, 28px); }
+.biz dt { font-size: 13.5px; font-weight: 700; color: var(--ink-3); }
+.biz dd { margin: 4px 0 0; font-size: 15.5px; line-height: 1.5; color: var(--ink); }
+
+.aside-note { margin-top: clamp(24px, 3vw, 36px); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(20px, 4vw, 64px); }
+.aside-note > * { min-width: 0; }
+.aside-note h3 { font-size: 20px; letter-spacing: -0.015em; }
+.aside-note p { font-size: 16.5px; line-height: 1.55; color: #222a34; margin: 0; max-width: 62ch; }
+
+/* how I work: a real sequence, so it is numbered */
+.loop { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 20px); counter-reset: step; }
+.loop li { counter-increment: step; border-top: 2px solid var(--ink); padding-top: 14px; min-width: 0; }
+.loop li::before { content: counter(step); display: block; font-size: 14px; font-weight: 700; color: var(--ink-3); font-variant-numeric: tabular-nums; margin-bottom: 8px; }
+.loop b { display: block; font-size: 20px; letter-spacing: -0.015em; line-height: 1.2; }
+.loop span { display: block; margin-top: 8px; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+.loop li:last-child b { color: var(--pin); }
+
+/* questions for the front line */
+.questions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); margin-top: clamp(28px, 4vw, 40px); }
+.question { background: var(--raised); border-radius: 16px; padding: clamp(20px, 2.4vw, 30px); display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.question h3 { font-size: clamp(21px, 2vw, 25px); letter-spacing: -0.02em; line-height: 1.2; text-wrap: balance; }
+.question dl { margin: 0; display: grid; gap: 14px; }
+.question dt { font-size: 13.5px; font-weight: 700; color: var(--ink-3); }
+.question dd { margin: 4px 0 0; font-size: 15.5px; line-height: 1.55; color: #222a34; }
+.sources { margin-top: 18px; font-size: 14px; line-height: 1.55; color: var(--ink-3); max-width: 90ch; }
+.sources a { color: var(--ink-2); }
+
+/* closing */
+.mt-close { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
+.mt-close > * { min-width: 0; }
+.mt-close .contact-line { margin-top: 18px; }
+.mt-close .contact-line a { text-decoration-thickness: 2px; text-decoration-color: var(--pin); }
+.mt-close .small { margin-top: 14px; }
+
+@media (max-width: 900px) {
+  .case, .case--product, .aside-note, .mt-close { grid-template-columns: minmax(0, 1fr); }
+  .loop { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 24px; }
+  .questions { grid-template-columns: minmax(0, 1fr); }
+  .biz dl { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .case-rows > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .case .figures { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .case .figures b { font-size: 22px; }
+  .case .figures span { font-size: 13.5px; }
+  .loop { grid-template-columns: minmax(0, 1fr); }
+}
