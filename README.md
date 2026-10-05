@@ -6,7 +6,7 @@ Plain HTML, CSS and a little JavaScript, no build step. Published with GitHub Pa
 
 - `index.html`: the launch (home)
 - `about/`: the maker (bio, release notes, how I make calls)
-- `work/`: the collection (five cases, the drop log, a spec concept)
+- `work/`: the collection (five cases and the drop log)
 - `casetify/`: the proposal (why CASETiFY, fit, choose-a-challenge)
 - `assets/css/launch.css`: all styles
 - `assets/js/launch.js`: scroll reveals and case tilt; every page works without it
