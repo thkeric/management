@@ -59,7 +59,9 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px
 :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; border-radius: 4px; }
 ::selection { background: var(--signal); color: #fff; }
 p { margin: 0 0 1em; text-wrap: pretty; }
+li, dd, .loop span { text-wrap: pretty; }
 abbr[title] { text-decoration: none; cursor: help; }
+.nowrap { white-space: nowrap; }
 h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 
 .wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
@@ -351,6 +353,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
   .page-hero-grid { grid-template-columns: minmax(0, 1fr); }
   .page-hero .hero-case { min-height: 0; padding-block: 8px 40px; order: -1; }
   .page-hero .hero-case .case { --w: clamp(150px, 42vw, 220px); }
+  .page-hero .hero-case > .stamp { bottom: 2% !important; right: 4% !important; }
 }
 
 /* about: portrait print */
@@ -378,7 +381,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 @media (max-width: 560px) { .loop { grid-template-columns: minmax(0, 1fr); } }
 
 .quote-card { margin: clamp(28px, 4vw, 48px) 0 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(16px, 3vw, 36px); align-items: start; background: var(--on-stage); color: var(--ink); border-radius: 26px; padding: clamp(24px, 3.4vw, 44px); }
-.quote-card .stamp { margin-top: 6px; }
+.quote-card .stamp { margin-top: 6px; justify-self: start; }
 .quote-card p { margin: 0; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.55; }
 @media (max-width: 640px) { .quote-card { grid-template-columns: minmax(0, 1fr); } }
 
