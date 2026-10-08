@@ -399,15 +399,28 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 @media (max-width: 640px) { .release { grid-template-columns: minmax(0, 1fr); gap: 8px; } }
 
 /* ---------- page: work ---------- */
-.mini-lineup { display: flex; flex-wrap: wrap; gap: clamp(12px, 2.2vw, 30px); align-items: flex-start; }
-.mini-lineup a { display: grid; justify-items: center; gap: 14px; text-decoration: none; }
-.mini-lineup .case { --w: clamp(64px, 8vw, 104px); --rx: 0deg; --ry: 0deg; }
-.mini-lineup a:hover .case-shell { transform: translateY(-8px) rotateZ(-4deg); }
-.mini-lineup .label { color: var(--on-stage-2); font-size: 11.5px; text-align: center; max-width: 12ch; }
+/* the five cases, spread across the page with their names printed on them */
+.mini-lineup { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); justify-items: center; align-items: end; gap: clamp(10px, 2vw, 28px); margin-top: clamp(44px, 6vw, 84px); }
+.mini-lineup a { display: block; text-decoration: none; border-radius: 18px; }
+.mini-lineup .case { --w: clamp(104px, 12.5vw, 176px); --rx: 0deg; --ry: 0deg; }
+.mini-lineup a:hover .case-shell, .mini-lineup a:focus-visible .case-shell { transform: translateY(-10px) rotateZ(-4deg); }
+.mini-print { position: absolute; left: 11%; right: 8%; bottom: 8%; display: grid; gap: calc(var(--w) * 0.03); color: var(--pc, #111); }
+.mini-print b { font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: calc(var(--w) * 0.27); line-height: 0.85; letter-spacing: -0.04em; margin-bottom: calc(var(--w) * 0.03); }
+.mini-print .nm { font-family: var(--body); font-weight: 700; font-size: max(11px, calc(var(--w) * 0.098)); line-height: 1.12; letter-spacing: -0.01em; }
+.mini-print .cw { font-family: var(--mono); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: max(8.5px, calc(var(--w) * 0.058)); line-height: 1.3; opacity: 0.78; }
+@media (max-width: 720px) {
+  .mini-lineup { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 12px; }
+  .mini-lineup .case { --w: 104px; }
+}
+
+/* one sentence per line where there is room */
+.lede--lines { max-width: none; }
+.lede--lines span, .lines span { display: block; }
 
 .edition { padding-block: clamp(56px, 7vw, 96px) clamp(40px, 5vw, 64px); }
 .edition h2 { font-size: clamp(40px, 6vw, 84px); }
 .edition p { color: var(--on-stage-2); font-size: clamp(17px, 1.6vw, 20px); max-width: 52ch; margin: 18px 0 0; }
+.edition p.lines { max-width: none; }
 
 .work-case { padding-block: clamp(56px, 7vw, 104px); border-bottom: 1px solid var(--line); }
 .work-case:last-of-type { border-bottom: 0; }
@@ -419,9 +432,11 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .wc-object .shots img { width: clamp(64px, 7vw, 92px); border-radius: 12px; box-shadow: 0 0 0 1px rgba(17, 18, 22, 0.08), 0 12px 24px -14px rgba(17, 18, 22, 0.5); }
 .wc-tag { display: inline-flex; align-items: center; gap: 10px; }
 .wc-tag::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgba(17, 18, 22, 0.15); }
-.work-case h3 { font-family: var(--display); font-stretch: 112%; font-weight: 850; letter-spacing: -0.03em; line-height: 0.98; font-size: clamp(36px, 4.6vw, 64px); margin: 16px 0 12px; }
+.work-case h3 { font-family: var(--display); font-stretch: 112%; font-weight: 850; letter-spacing: -0.03em; line-height: 0.98; font-size: clamp(30px, 3.6vw, 52px); margin: 16px 0 12px; }
+@media (min-width: 901px) { .work-case h3 .ln { display: block; } }
 .work-case .where { color: var(--ink-2); font-size: 16.5px; margin: 0 0 28px; }
-.work-case .where b { color: var(--ink); font-weight: 700; }
+.work-case .where b { display: block; color: var(--ink); font-weight: 700; }
+.work-case .where .meta { display: block; margin-top: 4px; color: var(--ink-3); font-size: 15.5px; }
 .figs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0 0 30px; }
 .figs div { background: var(--card); border-radius: 18px; padding: 18px 18px 16px; min-width: 0; }
 .figs b { display: block; font-family: var(--display); font-stretch: 115%; font-weight: 860; font-size: clamp(26px, 2.8vw, 38px); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
