@@ -59,6 +59,7 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px
 :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; border-radius: 4px; }
 ::selection { background: var(--signal); color: #fff; }
 p { margin: 0 0 1em; text-wrap: pretty; }
+abbr[title] { text-decoration: none; cursor: help; }
 h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 
 .wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
@@ -92,13 +93,11 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .site-nav a { text-decoration: none; color: var(--on-stage-2); white-space: nowrap; }
 .site-nav a:hover { color: var(--on-stage); }
 .site-nav a[aria-current="page"] { color: var(--on-stage); text-decoration: underline; text-decoration-color: var(--signal); text-decoration-thickness: 2px; text-underline-offset: 7px; }
-.site-nav .ext::after { content: " \2197"; }
 @media (max-width: 720px) {
   :root { --head-h: auto; }
   .site-head { height: auto; }
   .site-head .wrap { flex-direction: column; align-items: flex-start; gap: 6px; padding-block: 12px 10px; }
   .site-nav { gap: 16px; font-size: 14.5px; flex-wrap: wrap; }
-  .site-nav .ext { display: none; }
 }
 
 /* ---------- bands ---------- */
@@ -438,8 +437,6 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .biz dl { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .biz dt { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-stage-2); }
 .biz dd { margin: 6px 0 0; font-size: 15.5px; line-height: 1.5; }
-.more { display: inline-flex; gap: 8px; margin-top: 22px; font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--signal); padding-bottom: 2px; }
-.more::after { content: "\2197"; }
 @media (max-width: 900px) {
   .wc-grid { grid-template-columns: minmax(0, 1fr); }
   .wc-object { position: static; padding-block: 0 8px; }

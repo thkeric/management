@@ -13,4 +13,4 @@ Plain HTML, CSS and a little JavaScript, no build step. Published with GitHub Pa
 - `assets/img/`: images, plus `og.png` for link previews
 - `404.html`: page shown for broken links
 
-An independent job application. Not affiliated with or endorsed by CASETiFY. Design case studies live on the main site: https://thkeric.github.io/
+An independent job application. Not affiliated with or endorsed by CASETiFY.
