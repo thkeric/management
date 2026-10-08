@@ -236,7 +236,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .foot-row { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; align-items: baseline; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 10px 22px; }
 .foot-links a { color: var(--on-stage); }
-.disclaimer { font-size: 13.5px; color: #80838d; max-width: 80ch; margin: 0; border-top: 1px solid var(--stage-line); padding-top: 18px; }
+.foot-note { font-size: 13.5px; color: #80838d; margin: 0; border-top: 1px solid var(--stage-line); padding-top: 18px; }
 
 /* ---------- page: launch (home) ---------- */
 .launch { min-height: min(100svh - var(--head-h), 900px); display: flex; align-items: center; padding-block: clamp(40px, 7vw, 96px) clamp(56px, 8vw, 110px); }
@@ -535,3 +535,50 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 /* browsers without :has() show every answer */
 @supports not selector(:has(*)) { .answer { display: block; margin-bottom: 12px; } .q-print[data-q="1"] { opacity: 1; } }
 @media (max-width: 900px) { .config { grid-template-columns: minmax(0, 1fr); } .config-preview { position: relative; top: 0; min-height: 340px; } }
+
+/* ---------- back to top ---------- */
+.to-top {
+  position: fixed; z-index: 45;
+  right: calc(env(safe-area-inset-right, 0px) + 22px); bottom: calc(env(safe-area-inset-bottom, 0px) + 22px);
+  width: 54px; height: 54px; border: 0; border-radius: 50%; padding: 0; cursor: pointer;
+  display: grid; place-items: center; background: var(--signal); color: #fff;
+  box-shadow: 0 0 0 3px #fff, 0 14px 28px -10px rgba(0, 0, 0, 0.55);
+  opacity: 0; transform: translateY(18px) scale(0.9); pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.to-top.is-shown { opacity: 1; transform: none; pointer-events: auto; }
+.to-top.is-shown:hover { transform: translateY(-4px); }
+.to-top svg { width: 22px; height: 22px; display: block; margin-top: -3px; }
+.to-top:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+
+/* ---------- section dots ---------- */
+.dots {
+  position: fixed; z-index: 44; top: 50%; right: calc(env(safe-area-inset-right, 0px) + 16px); transform: translateY(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 13px 8px;
+  border-radius: 999px; background: rgba(11, 11, 13, 0.58);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+.dots a { position: relative; display: block; width: 9px; height: 9px; border-radius: 999px; background: rgba(255, 255, 255, 0.42); transition: height 0.3s ease, background-color 0.3s ease; }
+.dots a::before { content: ""; position: absolute; inset: -6px -8px; }
+.dots a:hover { background: #fff; }
+.dots a[aria-current="true"] { height: 26px; background: var(--signal); }
+.dots a span {
+  position: absolute; right: calc(100% + 18px); top: 50%; transform: translate(6px, -50%);
+  white-space: nowrap; background: var(--stage); color: var(--on-stage);
+  font-family: var(--mono); font-weight: 600; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.2;
+  padding: 7px 10px; border-radius: 8px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14);
+  opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.dots a:hover span, .dots a:focus-visible span { opacity: 1; transform: translate(0, -50%); }
+.dots a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+/* small screens: a slim, non-interactive indicator in the page edge so it never covers text */
+@media (max-width: 1099px) {
+  .dots { right: calc(env(safe-area-inset-right, 0px) + 4px); gap: 7px; padding: 0; background: none; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none; }
+  .dots a { width: 5px; height: 5px; background: rgba(255, 255, 255, 0.9); box-shadow: 0 0 0 1px rgba(17, 18, 22, 0.35); }
+  .dots a[aria-current="true"] { height: 16px; background: var(--signal); box-shadow: none; }
+  .to-top { width: 48px; height: 48px; right: calc(env(safe-area-inset-right, 0px) + 16px); bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .to-top, .dots a, .dots a span { transition: none; }
+}
